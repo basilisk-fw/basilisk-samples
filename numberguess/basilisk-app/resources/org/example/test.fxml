@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="org.example.TestController">
+    <padding>
+        <Insets top="20" left="20" bottom="40" right="20"/>
+    </padding>
+    <top>
+        <Label wrapText="true" styleClass="h2"
+               text="Try to guess the number correctly. Good Luck!"/>
+    </top>
+    <center>
+        <VBox spacing="10" BorderPane.alignment="CENTER">
+            <Label wrapText="true" styleClass="p"
+                   text="Thinking of a number between 0 and 100"/>
+            <TextField fx:id="guessTextField"/>
+            <GridPane HBox.hgrow="ALWAYS">
+                <Button fx:id="guessActionTarget"
+                        GridPane.columnIndex="0" GridPane.hgrow="ALWAYS"
+                        prefWidth="210"
+                        styleClass="btn, btn-success"
+                        mnemonicParsing="false"
+                        text="Guess"/>
+                <Button fx:id="restartActionTarget"
+                        GridPane.columnIndex="1" GridPane.hgrow="ALWAYS"
+                        prefWidth="210"
+                        styleClass="btn, btn-danger"
+                        mnemonicParsing="false"/>
+            </GridPane>
+            <HBox>
+                <Label text="Remaining guesses " styleClass="lbl" style="-fx-text-fill: black;"/>
+                <Label text="10" styleClass="lbl, lbl-primary" fx:id="remainingGuesses"/>
+            </HBox>
+            <BorderPane.margin>
+                <Insets top="10" left="10" bottom="10" right="10"/>
+            </BorderPane.margin>
+        </VBox>
+    </center>
+    <bottom>
+        <HBox fx:id="alert" visible="false">
+            <Label fx:id="alertText" styleClass="lbl" text="Lorem ipsum dolor sit amet"/>
+        </HBox>
+    </bottom>
+</BorderPane>
