@@ -1,9 +1,11 @@
 package org.example;
 
 import basilisk.core.artifact.BasiliskController;
+import basilisk.inject.MVCMember;
 import basilisk.metadata.ArtifactProviderFor;
 import org.kordamp.basilisk.runtime.core.artifact.AbstractBasiliskController;
 
+import javax.annotation.Nonnull;
 import java.util.Map;
 import java.util.Random;
 
@@ -29,7 +31,8 @@ public class TestController extends AbstractBasiliskController {
         System.out.println(number);
     }
 
-    public void setModel(TestModel model) {
+    @MVCMember
+    public void setModel(@Nonnull TestModel model) {
         this.model = model;
     }
 

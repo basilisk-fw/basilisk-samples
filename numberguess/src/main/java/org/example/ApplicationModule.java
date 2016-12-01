@@ -1,6 +1,5 @@
 package org.example;
 
-import basilisk.core.event.EventHandler;
 import basilisk.core.injection.Module;
 import org.kordamp.basilisk.runtime.core.injection.AbstractModule;
 import org.kordamp.basilisk.runtime.util.ResourceBundleProvider;
@@ -16,10 +15,6 @@ public class ApplicationModule extends AbstractModule {
         bind(ResourceBundle.class)
             .withClassifier(named("applicationResourceBundle"))
             .toProvider(new ResourceBundleProvider("org.example.Config"))
-            .asSingleton();
-
-        bind(EventHandler.class)
-            .to(ApplicationEventHandler.class)
             .asSingleton();
     }
 }

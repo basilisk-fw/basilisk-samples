@@ -1,6 +1,7 @@
 package org.example;
 
 import basilisk.core.artifact.BasiliskView;
+import basilisk.inject.MVCMember;
 import basilisk.metadata.ArtifactProviderFor;
 import basilisk.util.BasiliskApplicationUtils;
 import javafx.fxml.FXML;
@@ -19,6 +20,7 @@ import javafx.stage.Stage;
 import javafx.util.StringConverter;
 import org.kordamp.basilisk.runtime.javafx.artifact.AbstractJavaFXBasiliskView;
 
+import javax.annotation.Nonnull;
 import java.util.Collections;
 
 import static basilisk.util.BasiliskNameUtils.isBlank;
@@ -38,11 +40,13 @@ public class TestView extends AbstractJavaFXBasiliskView {
     @FXML private Label remainingGuesses;
     @FXML private Label alertText;
 
-    public void setController(TestController controller) {
+    @MVCMember
+    public void setController(@Nonnull TestController controller) {
         this.controller = controller;
     }
 
-    public void setModel(TestModel model) {
+    @MVCMember
+    public void setModel(@Nonnull TestModel model) {
         this.model = model;
     }
 
@@ -68,6 +72,7 @@ public class TestView extends AbstractJavaFXBasiliskView {
 
         Node node = loadFromFXML();
         connectActions(node, controller);
+        connectMessageSource(node);
 
         bindBidirectional(guessTextField.textProperty(), model.guessProperty(), new StringConverter<Number>() {
             @Override
